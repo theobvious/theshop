@@ -1,0 +1,11 @@
+<div id="oldcart">
+    <h3>You have an unfinished cart. Here are its contents:</h3>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of products">
+            {{product.name}} ({{product.quantity}})
+        </li>
+    </ul>
+    <h4>Would you like to continue with this cart?</h4>
+    <button class="btn btn-success btn-outline-rounded btn-info" (click)="continue()">Yes</button>
+    <button class="btn btn-success btn-outline-rounded btn-info" (click)="reset()">No</button>
+</div>

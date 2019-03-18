@@ -1,0 +1,25 @@
+<div *ngIf="product">
+    <h2>{{product.name}} details</h2>
+    <div>
+      <label>Name:
+        <input [(ngModel)]="product.name" placeholder="name"/>
+      </label>
+      </div>
+      <div>
+      <label>Price:
+        <input [(ngModel)]="product.price" placeholder="price"/>
+      </label>
+      </div>
+      <div>
+        You can input a link to change the image.
+      <label>Image:
+        <input [(ngModel)]="product.img" placeholder="image link"/>
+      </label>
+      </div>
+      <div>
+        <img src="{{product.img}}" class="preview">
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="editProduct(product)">Save changes</button>
+      </div>
+  </div>

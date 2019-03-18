@@ -1,0 +1,18 @@
+<h1 class="m-4">Magical Menagerie</h1>
+
+<div *ngIf="pets" class="row card-group">
+  <div class="col-4" *ngFor="let pet of pets">
+    <div class="card m-3">
+      <img class="card-img-top" src="{{pet.img}}" alt="pet">
+      <div class="card-body">
+        <h5 class="card-header">{{pet.name}}</h5>
+        <p class="card-title">{{pet.price}}</p>
+        <div>
+          <label>Quantity: </label>
+          <input type="number" [(ngModel)]="pet.quantity"></div>
+        <button (click)="addToCart(pet)" class="btn btn-primary">Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

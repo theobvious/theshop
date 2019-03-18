@@ -1,0 +1,52 @@
+<div id="header">
+  <h3>Welcome, {{name}}, here you can manage the stock (edit an item by clicking on its name)<br>or <a [routerLink]="['addproduct']">add a new product</a>.</h3>
+</div>
+<div class="container">
+  <div class="row">
+      <div id="list" class="col-4">
+          <!-- <div *ngIf="products">
+              <h3>Products</h3>
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let product of products">
+                    <a [routerLink]="['editproduct/' + product.id]"> {{product.name}} </a>
+                </li>
+              </ul>
+            </div> -->
+          <div *ngIf="brooms">
+            <h3>Brooms</h3>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let broom of brooms">
+                  <a [routerLink]="['editproduct/' + broom.id]"> {{broom.name}} </a>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="pets">
+            <h3>Pets</h3>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let pet of pets">
+                  <a [routerLink]="['editproduct/' + pet.id]">{{pet.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="potions">
+            <h3>Potion ingredients</h3>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let potion of potions">
+                  <a [routerLink]="['editproduct/' + potion.id]">{{potion.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="wands">
+            <h3>Wands</h3>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let wand of wands">
+                  <a [routerLink]="['editproduct/' + wand.id]">{{wand.name}}</a>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <div id="edit" class="col-8">
+            <router-outlet></router-outlet>
+          </div>
+  </div>
+</div>

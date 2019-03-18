@@ -1,0 +1,66 @@
+<div  class="container mt-4" id="incart" *ngIf="filling">
+  <div *ngIf="cart">
+    <h4>In your cart:</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let product of cart">
+        {{product.name}} ({{product.quantity}})
+      </li>
+    </ul>
+    <h4>Total: {{order.total}}</h4>
+    <button class="btn btn-secondary" (click)="backToShop()">Keep shopping</button>
+  </div>
+  <br><br>
+  <div class="container mt-4" id="checkoutform">
+    <form novalidate (ngSubmit)="finishShopping()" #f="ngForm">
+      <legend>Please fill in your shipping and payment info.</legend>
+      <button type="button" class="btn btn-secondary" (click)="fillForm()">Ship to default address?</button>
+
+      <div class="form-group">
+        <label>City</label>
+        <select class="form-control" name="city" [(ngModel)]="order.city">
+          <option *ngFor="let city of cities">
+            {{city}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Street</label>
+        <input type="text" class="form-control" name="street" [(ngModel)]="order.street" required #street="ngModel"
+          [ngClass]="{'is-invalid': street.invalid && street.touched}">
+        <div *ngIf="street.invalid && street.touched" class="invalid-feedback">
+          Street field can't be blank
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery date</label>
+        <input type="date" class="form-control" name="date" [(ngModel)]="order.date" required #date="ngModel">
+      </div>
+
+      Payment:
+      <div class="form-group">
+        <label>Credit card</label>
+        <input type="password" minlength=16 maxlength=19 class="form-control" name="card" [(ngModel)]="order.card"
+          required #card="ngModel" [ngClass]="{'is-invalid': card.invalid && card.touched}">
+        <div *ngIf="card.invalid && card.touched" class="invalid-feedback">
+          <div *ngIf="card.errors?.minlength || card.error?.maxlength">
+            Credit card number must be between 16-19 digits.
+          </div>
+          <div *ngIf="card.errors?.required">
+            Please enter your credit card number.
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" [disabled]="f.invalid || submitted" class="btn btn-success btn-outline-rounded btn-info">
+          Finish shopping
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="done" *ngIf="finished" class="container mt-4">
+  Thank you for shopping with us!
+  <button class="btn btn-primary" (click)="backToShop()">OK</button>
+</div>

@@ -1,0 +1,18 @@
+<h1 class="m-4">Ollivander's Wand Shop</h1>
+
+<div *ngIf="wands" class="row card-group">
+  <div class="col-4" *ngFor="let wand of wands">
+    <div class="card m-3">
+      <img class="card-img-top" src="{{wand.img}}" alt="Wand">
+      <div class="card-body">
+        <h5 class="card-header">{{wand.name}}</h5>
+        <p class="card-title">{{wand.price}}</p>
+        <div>
+          <label>Quantity: </label>
+          <input type="number" [(ngModel)]="wand.quantity"></div>
+        <button (click)="addToCart(wand)" class="btn btn-primary">Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

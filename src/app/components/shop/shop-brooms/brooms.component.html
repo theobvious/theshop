@@ -1,0 +1,18 @@
+<h1 class="m-4">Quidditch Supplies</h1>
+
+<div *ngIf="brooms" class="row card-group">
+  <div class="col-4" *ngFor="let broom of brooms">
+    <div class="card m-3">
+      <img class="card-img-top" src="{{broom.img}}" alt="broom">
+      <div class="card-body">
+        <h5 class="card-header">{{broom.name}}</h5>
+        <p class="card-title">{{broom.price}}</p>
+        <div>
+          <label>Quantity: </label>
+          <input type="number" [(ngModel)]="broom.quantity"></div>
+        <button (click)="addToCart(broom)" class="btn btn-primary">Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="navigation">
+    <img src="../assets/toplogo.jpg" height="50px">
+    Welcome to Diagon Alley<span *ngIf="id;else noid">, {{id}}</span><ng-template #noid>, guest</ng-template>! 
+    <div class="right-block">
+        <button class="btn btn-secondary nav-item" routerLink="/admin">Admin</button>
+        <button *ngIf="loggedIn" class="btn btn-secondary nav-item" routerLink="/shop">Shop</button>
+        <button *ngIf="loggedIn" class="btn btn-secondary nav-item" (click)=logOutBtn()>Logout</button>
+        <fa *ngIf="loggedIn" name="shopping-cart" class="nav-item" routerLink="/cart"></fa>
+    </div>
+</div>
+<router-outlet></router-outlet>
