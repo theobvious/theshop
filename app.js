@@ -324,6 +324,6 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(8080, () => {
-  console.log("8080 is ready");
+app.listen(process.env.PORT || 8000, () => {
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
